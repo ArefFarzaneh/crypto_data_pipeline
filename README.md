@@ -1,6 +1,5 @@
 # 📈 Real-Time Cryptocurrency Data Pipeline
 
-![Pipeline Architecture](https://i.imgur.com/JQ8w0Rn.png)  
 *A Dockerized streaming pipeline for processing live crypto prices with Redpanda (Kafka-compatible)*
 
 ## 🌟 Key Features
@@ -18,7 +17,7 @@
   curl -1sLf 'https://dl.redpanda.com/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.rpm.sh' | sudo bash && sudo apt-get install -y rpk
   
   # Clone the repository
-  git clone https://github.com/yourusername/crypto-data-pipeline.git
+  git clone https://github.com/ArefFarzaneh/crypto-data-pipeline.git
   cd crypto-data-pipeline
   
   # Start all services (Redpanda + Producer + Consumer)
