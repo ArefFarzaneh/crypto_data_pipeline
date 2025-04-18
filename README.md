@@ -16,3 +16,12 @@
 - rpk CLI (*optional for local inspection*):
   ```bash
   curl -1sLf 'https://dl.redpanda.com/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.rpm.sh' | sudo bash && sudo apt-get install -y rpk
+  # Clone the repository
+git clone https://github.com/yourusername/crypto-data-pipeline.git
+cd crypto-data-pipeline
+
+# Start all services (Redpanda + Producer + Consumer)
+docker-compose up -d
+
+# Verify all containers are running
+docker-compose ps
