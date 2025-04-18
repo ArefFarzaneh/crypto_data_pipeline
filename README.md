@@ -1,27 +1,18 @@
-# Real-Time Cryptocurrency Data Pipeline with Redpanda
+# 📈 Real-Time Cryptocurrency Data Pipeline
 
-*A scalable streaming pipeline for cryptocurrency market data*
+![Pipeline Architecture](https://i.imgur.com/JQ8w0Rn.png)  
+*A Dockerized streaming pipeline for processing live crypto prices with Redpanda (Kafka-compatible)*
 
-## 🚀 Features
+## 🌟 Key Features
 - **Real-time price streaming** from CoinLore API
-- **Moving average calculations** using Quix Streams
-- **Redpanda** (Kafka-compatible) for high-throughput messaging
-- **Dockerized** for easy deployment
+- **On-the-fly metrics** (moving averages, volatility)
+- **Fault-tolerant design** with auto-recovery
+- **Ready for extensions** (alerts, dashboards, ML)
 
-## 🛠️ Prerequisites
-1. **Docker** ([Install Guide](https://docs.docker.com/get-docker/))
-2. **rpk CLI** (for topic inspection):
-   ```bash
-   # Linux/macOS installation
-   curl -1sLf 'https://dl.redpanda.com/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.rpm.sh' | sudo bash
-   sudo apt-get install -y rpk
+## 🚀 Quick Start
 
-# Clone the repository
-git clone https://github.com/yourusername/crypto-data-pipeline.git
-cd crypto-data-pipeline
-
-# Start the pipeline
-docker-compose up -d
-
-# Verify services
-docker-compose ps
+### Prerequisites
+- Docker ([Install Guide](https://docs.docker.com/get-docker/))
+- rpk CLI (*optional for local inspection*):
+  ```bash
+  curl -1sLf 'https://dl.redpanda.com/nzc4ZYQK3WRGd9sy/redpanda/cfg/setup/bash.rpm.sh' | sudo bash && sudo apt-get install -y rpk
