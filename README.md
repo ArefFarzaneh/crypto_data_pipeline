@@ -1,6 +1,5 @@
 # Real-Time Cryptocurrency Data Pipeline with Redpanda
 
-![Architecture Diagram](assets/architecture.png)  
 *A scalable streaming pipeline for cryptocurrency market data*
 
 ## 🚀 Features
