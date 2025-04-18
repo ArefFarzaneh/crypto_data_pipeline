@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  redpanda:
+    image: docker.redpanda.com/redpandadata/redpanda:latest
+    container_name: redpanda
+    command: 
+      - "redpanda"
+      - "start"
+      - "--smp=1"
+      - "--memory=1G"
+      - "--reserve-memory=0M"
+      - "--node-id=0"
+      - "--overprovisioned"
+      - "--kafka-addr=PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092"
+      - "--advertise-kafka-addr=PLAINTEXT://redpanda:29092,OUTSIDE://redpanda:9092"
+    ports:
+      - "9092:9092"  # Kafka API
+      - "9644:9644"   # Admin API
+    healthcheck:
+      test: ["CMD-SHELL", "rpk cluster health | grep -q 'healthy'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - redpanda_data:/var/lib/redpanda/data
+
+  producer:
+    build:
+      context: .
+      dockerfile: producer/Dockerfile
+    volumes:
+      - ./config:/app/config
+
+    depends_on:
+      redpanda:
+        condition: service_healthy
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  consumer:
+    build:
+      context: .
+      dockerfile: consumer/Dockerfile
+    volumes:
+      - ./config:/app/config
+      - ./database:/app/database
+      - ./data:/data
+    depends_on:
+      redpanda:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f 'python consumer.py' || exit 1"]
+      interval: 30s
+    environment:
+      - PYTHONUNBUFFERED=1
+
+volumes:
+  redpanda_data:
