@@ -8,7 +8,6 @@
 - **Moving average calculations** using Quix Streams
 - **Redpanda** (Kafka-compatible) for high-throughput messaging
 - **Dockerized** for easy deployment
-- **SQLite storage** (easily swappable for PostgreSQL/MySQL)
 
 ## 🛠️ Prerequisites
 1. **Docker** ([Install Guide](https://docs.docker.com/get-docker/))
